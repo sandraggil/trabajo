@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+ <title>Basic map</title>
+ <meta name="viewport" content="width=device-width,
+ initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+ <link rel="stylesheet" href="css/leaflet.css">
+ <script src="js/leaflet.js"></script>
+ <style>
+
+
+ body {
+ padding: 0;
+ margin: 0;
+ }
+ html, body, #map {
+ height: 100%;
+ width: 100%;
+ }
+
+           
+</style>
+
+<style>
+    #title {
+        position: fixed;
+        top: 10px;
+        left: 55px;
+        margin-top: 0;
+        padding: 10px 15px;
+        background-color: rgba(9, 230, 163, 0.178);
+        border: 1px solid rgb(23, 188, 218);
+        border-radius: 3px;
+        z-index: 800;
+    }
+    #description {
+        position: fixed;
+        bottom: 2px;
+        left: 10px;
+        width: 100px;
+        padding: 0px 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid grey;
+        border-radius: 3px;
+        z-index: 1000;
+    }
+</style>
+
+</head>
+<body>
+ <div id="map"></div>
+ <h1 id="title">NUESTRO VIAJE A TENERIFE</h1>
+        <div id="description">
+            </p>Viaje que se llevara a cavo en el mes de junio. 
+            </p>El alojamiento se encuetra
+                en el municipio de San Cristobal de la Laguna. Desde ese municipio conmenzaran
+                cada una de las excursiones.
+            
+            <head>
+       
+                <style>
+                    h1{color: blueviolet;font-family: Times New Roman, Times, serif; font-style: italic;}
+                    
+                    
+                        
+                    p {
+                        padding: 5px;
+                        margin: 0px;
+                    }
+                    #itinerario {background-color: #f5dede;}
+                    #dia1 {background-color: #ff2020;}
+                    #dia2 {background-color: #5340ff;}
+                    #dia3 {background-color: #17f52a;}
+                    #dia4 {background-color: #f5f50a;}
+                    #dia5 {background-color: #f17eae;}
+                    
+                </style>
+            </head>
+            <body>
+                
+                <p id="itinerario">ITINERARIO</p>
+                <p id="dia1">Día 1</p>
+                <p id="dia2">Día 2</p>
+                <p id="dia3">Día 3</p>
+                <p id="dia4">Día 4</p>
+                <p id="dia5">Día 5</p>
+                
+                
+        
+            </body>
+
+ <script>
+ let map = L.map("map", {center: [28.307082, -16.568078], zoom: 10});
+ L.tileLayer(
+    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
+}
+ ).addTo(map);
+
+        let la_laguna = L.marker ( [28.494259, -16.321073]).addTo(map);
+        let teide = L.marker( [28.252534, -16.625895]).addTo(map);
+        let cañadas = L.marker( [28.247237, -16.667695]).addTo(map);
+        let drago = L.marker( [28.366650, -16.722402]).addTo(map);
+        let anaga = L.marker( [28.529939, -16.262455]).addTo(map);
+        let masca = L.marker( [28.304430, -16.840055]).addTo(map);       let gigantes = L.marker( [28.239447, -16.846106]).addTo(map);
+        let montaña_roja = L.marker( [28.025832, -16.547430]).addTo(map);
+        let punta_teno = L.marker( [28.341932, -16.923187]).addTo(map);
+        let garachicho = L.marker( [28.375446, -16.764640]).addTo(map);
+        let puerto_cruz = L.marker( [28.418147, -16.543338]).addTo(map);
+ 
+
+        let dia_1 = L.polyline([ [28.494259, -16.321073], [28.529939, -16.262455]],{color: "red", weight: 5}) .addTo(map);
+
+        let dia_2 = L.polyline([ [28.247237, -16.667695], [28.252534, -16.625895],[28.494259, -16.321073]],{color: "blue", weight: 5}) .addTo(map);
+
+        let dia_3 = L.polyline([ [28.375446, -16.764640], [28.366650, -16.722402],[28.418147, -16.543338] ,[28.494259, -16.321073]],{color: "green", weight: 5}) .addTo(map);
+
+        let dia_4 = L.polyline([ [28.025832, -16.547430], [28.494259, -16.321073]],{color: "yellow", weight: 5}) .addTo(map);
+
+        let dia_5 = L.polyline([ [28.304430, -16.840055], [28.341932, -16.923187],[28.239447, -16.846106] ,[28.494259, -16.321073]],{color: "pink", weight: 5}) .addTo(map);
+
+
+        la_laguna.bindPopup("<b>La Laguna</b><img src='images/laguna.jpg'</p>" );
+        anaga.bindPopup("<b>Anaga</b> <img src='images/anaga.jpg'</p>");
+        teide.bindPopup("<b>Teide</b> <img src='images/teide.jpg'</p>");
+        cañadas.bindPopup("<b>Las Cañadas</b> <img src='images/parque-nacional-las-canadas.jpg'</p>");
+        drago.bindPopup("<b>Arbol centenario drago</b> <img src='images/drago-milenario.jpg'</p> ");
+        masca.bindPopup("<b>Masca</b> <img src='images/masca.jpg'</p>");
+        gigantes.bindPopup("<b>Acantilado de los Gigantes</b> <img src='images/gigantes.jpg'</p>");
+        montaña_roja.bindPopup("<b>Montaña Roja</b> <img src='images/Montana-Roja.jpg'</p> ");
+        punta_teno.bindPopup("<b>Punta Teno</b> <img src='images/punta_teno.jpg'</p> ");
+        garachicho.bindPopup("<b>Garachicho</b> <img src='images/garachicho.jpg'</p>");
+        puerto_cruz.bindPopup("<b>Puerto la cruz</b> <img src='images/puerto_la_cruz.jpg'</p>");
+
+</script>
+
+
+</body>
+</html>
